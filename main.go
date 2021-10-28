@@ -1,11 +1,16 @@
 package main
 
 import (
-	"fmt"
-
-	"rsc.io/quote"
+	"encoding/json"
+	"os"
 )
 
 func main() {
-	fmt.Println(quote.Glass())
+	res, _ := json.Marshal(&Point{X: 1})
+	probJson, _ := os.Create("problems.json")
+	probJson.Write(res)
+}
+
+type Point struct {
+	X int
 }
