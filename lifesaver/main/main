@@ -1,0 +1,102 @@
+package main
+
+import (
+	"fmt"
+	"log"
+	"net/http"
+	"os"
+	"os/exec"
+	"os/signal"
+	"runtime"
+	"runtime/debug"
+	"runtime/pprof"
+	"syscall"
+	"time"
+
+	"github.com/luxcgo/lifesaver/engine"
+	_ "github.com/luxcgo/lifesaver/internal"
+	"github.com/luxcgo/lifesaver/monitor"
+	"github.com/luxcgo/lifesaver/recorder"
+)
+
+var done = make(chan struct{})
+
+func main1() {
+	http.HandleFunc("/_stack", getStackTraceHandler)
+	go http.ListenAndServe(":8080", nil)
+	count()
+	log.SetFlags(log.LstdFlags | log.Lshortfile)
+	defer count()
+	s, err := engine.NewShow("huya", "521999")
+	if err != nil {
+		println(err)
+		return
+	}
+	s.AddMonitor()
+	// go listenSignal()
+	// <-done
+	time.Sleep(time.Second * 6)
+	recorder.RecorderManager.Stop()
+	monitor.MonitorManager.Stop()
+	log.Println("耐心等待")
+	time.Sleep(time.Hour * 15)
+}
+
+func listenSignal() {
+	ch := make(chan os.Signal, 1)
+	signal.Notify(ch, syscall.SIGTERM, syscall.SIGINT)
+	for sig := range ch {
+		log.Printf("收到结束信号(%s)，准备结束进程\n", sig.String())
+		// go func() {
+		// 	select {
+		// 	case <-time.After(time.Duration(time.Second * 5)):
+		// 		log.Printf("超时，强制退出~\n")
+		// 		done <- struct{}{}
+		// 		return
+		// 	}
+		// }()
+		recorder.RecorderManager.Stop()
+		monitor.MonitorManager.Stop()
+		done <- struct{}{}
+		return
+	}
+}
+
+func count() {
+
+	fmt.Println(runtime.NumGoroutine())
+}
+
+func getStackTraceHandler(w http.ResponseWriter, r *http.Request) {
+	stack := debug.Stack()
+	w.Write(stack)
+	pprof.Lookup("goroutine").WriteTo(w, 2)
+}
+
+func main2() {
+	count()
+	log.SetFlags(log.LstdFlags | log.Lshortfile)
+	defer count()
+	cmd := exec.Command("sleep", "5")
+	if err := cmd.Start(); err != nil {
+		log.Fatal(err)
+	}
+
+	// Wait for the process to finish or kill it after a timeout (whichever happens first):
+	done := make(chan error, 1)
+	go func() {
+		done <- cmd.Wait()
+	}()
+	select {
+	case <-time.After(3 * time.Second):
+		if err := cmd.Process.Kill(); err != nil {
+			log.Fatal("failed to kill process: ", err)
+		}
+		log.Println("process killed as timeout reached")
+	case err := <-done:
+		if err != nil {
+			log.Fatalf("process finished with error = %v", err)
+		}
+		log.Print("process finished successfully")
+	}
+}
