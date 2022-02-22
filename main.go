@@ -9,6 +9,10 @@ import (
 	"strings"
 )
 
+func main() {
+	println("hi")
+}
+
 var flagPath = flag.String("path", "test", "path to traverse and rename.")
 
 func renamePath(path string, f os.FileInfo, err error) (e error) {
@@ -26,7 +30,7 @@ func init() {
 	flag.Parse()
 }
 
-func main() {
+func main1() {
 	dir := "/Users/lucas/github/go-acwing/problems"
 	err := filepath.WalkDir(dir, func(fpath string, d fs.DirEntry, err error) error {
 		if !d.IsDir() {
