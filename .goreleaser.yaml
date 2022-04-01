@@ -50,7 +50,6 @@ archives:
         format: zip
     files:
       - LICENSE.md
-      - CHANGELOG.md
 
 checksum:
   name_template: "{{ .ProjectName }}_v{{ .Version }}_checksums.txt"
