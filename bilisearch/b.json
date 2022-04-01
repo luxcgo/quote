@@ -1,0 +1,257 @@
+{
+    "code": 0,
+    "message": "0",
+    "ttl": 1,
+    "data": {
+        "seid": "3380242041635658927",
+        "page": 1,
+        "pagesize": 20,
+        "numResults": 1,
+        "numPages": 1,
+        "suggest_keyword": "",
+        "rqt_type": "search",
+        "cost_time": {
+            "params_check": "0.000743",
+            "illegal_handler": "0.013616",
+            "as_response_format": "0.001131",
+            "mysql_request": "0.000043",
+            "as_request": "0.033275",
+            "save_cache": "0.000954",
+            "as_request_format": "0.001321",
+            "deserialize_response": "0.000154",
+            "total": "0.055088",
+            "main_handler": "0.036596"
+        },
+        "exp_list": {
+            "6602": true,
+            "5502": true,
+            "7708": true
+        },
+        "egg_hit": 0,
+        "pageinfo": {
+            "live_room": {
+                "numResults": 0,
+                "total": 0,
+                "pages": 0
+            },
+            "pgc": {
+                "numResults": 0,
+                "total": 0,
+                "pages": 0
+            },
+            "operation_card": {
+                "numResults": 0,
+                "total": 0,
+                "pages": 0
+            },
+            "tv": {
+                "numResults": 0,
+                "total": 0,
+                "pages": 0
+            },
+            "movie": {
+                "numResults": 0,
+                "total": 0,
+                "pages": 0
+            },
+            "bili_user": {
+                "numResults": 0,
+                "total": 0,
+                "pages": 0
+            },
+            "live_master": {
+                "numResults": 0,
+                "total": 0,
+                "pages": 0
+            },
+            "live_all": {
+                "numResults": 0,
+                "total": 0,
+                "pages": 0
+            },
+            "topic": {
+                "numResults": 0,
+                "total": 0,
+                "pages": 0
+            },
+            "upuser": {
+                "numResults": 0,
+                "total": 0,
+                "pages": 0
+            },
+            "live": {
+                "numResults": 0,
+                "total": 0,
+                "pages": 0
+            },
+            "video": {
+                "numResults": 1,
+                "total": 1,
+                "pages": 1
+            },
+            "user": {
+                "numResults": 0,
+                "total": 0,
+                "pages": 0
+            },
+            "bangumi": {
+                "numResults": 0,
+                "total": 0,
+                "pages": 0
+            },
+            "activity": {
+                "numResults": 0,
+                "total": 0,
+                "pages": 0
+            },
+            "media_ft": {
+                "numResults": 0,
+                "total": 0,
+                "pages": 0
+            },
+            "article": {
+                "numResults": 0,
+                "total": 0,
+                "pages": 0
+            },
+            "media_bangumi": {
+                "numResults": 0,
+                "total": 0,
+                "pages": 0
+            },
+            "special": {
+                "numResults": 0,
+                "total": 0,
+                "pages": 0
+            },
+            "live_user": {
+                "numResults": 0,
+                "total": 0,
+                "pages": 0
+            }
+        },
+        "top_tlist": {
+            "live_room": 0,
+            "pgc": 0,
+            "operation_card": 0,
+            "tv": 0,
+            "movie": 0,
+            "special": 0,
+            "live_master": 0,
+            "bili_user": 0,
+            "topic": 0,
+            "upuser": 0,
+            "live": 0,
+            "video": 1,
+            "user": 0,
+            "bangumi": 0,
+            "activity": 0,
+            "media_ft": 0,
+            "article": 0,
+            "media_bangumi": 0,
+            "card": 0,
+            "live_user": 0
+        },
+        "show_column": 0,
+        "show_module_list": [
+            "tips",
+            "esports",
+            "activity",
+            "web_game",
+            "card",
+            "media_bangumi",
+            "media_ft",
+            "bili_user",
+            "user",
+            "star",
+            "video"
+        ],
+        "result": [
+            {
+                "result_type": "tips",
+                "data": []
+            },
+            {
+                "result_type": "esports",
+                "data": []
+            },
+            {
+                "result_type": "activity",
+                "data": []
+            },
+            {
+                "result_type": "web_game",
+                "data": []
+            },
+            {
+                "result_type": "card",
+                "data": []
+            },
+            {
+                "result_type": "media_bangumi",
+                "data": []
+            },
+            {
+                "result_type": "media_ft",
+                "data": []
+            },
+            {
+                "result_type": "bili_user",
+                "data": []
+            },
+            {
+                "result_type": "user",
+                "data": []
+            },
+            {
+                "result_type": "star",
+                "data": []
+            },
+            {
+                "result_type": "video",
+                "data": [
+                    {
+                        "type": "video",
+                        "id": 937420972,
+                        "author": "cxul",
+                        "mid": 46929587,
+                        "typeid": "21",
+                        "typename": "日常",
+                        "arcurl": "http://www.bilibili.com/video/av937420972",
+                        "aid": 937420972,
+                        "bvid": "BV1wT4y1S77N",
+                        "title": "[\u003cem class=\"keyword\"\u003e2022\u003c/em\u003e-\u003cem class=\"keyword\"\u003e03\u003c/em\u003e-\u003cem class=\"keyword\"\u003e19\u003c/em\u003e 12-\u003cem class=\"keyword\"\u003e45\u003c/em\u003e-43][\u003cem class=\"keyword\"\u003e李壹壹\u003c/em\u003e]",
+                        "description": "",
+                        "arcrank": "0",
+                        "pic": "//i2.hdslb.com/bfs/archive/d79fe384490de7ff1d08c4b05eb18ff84ccf9c93.jpg",
+                        "play": 9,
+                        "video_review": 0,
+                        "favorites": 0,
+                        "tag": "vlog",
+                        "review": 0,
+                        "pubdate": 1647761690,
+                        "senddate": 1647761690,
+                        "duration": "258:31",
+                        "badgepay": false,
+                        "hit_columns": [
+                            "title"
+                        ],
+                        "view_type": "",
+                        "is_pay": 0,
+                        "is_union_video": 0,
+                        "rec_tags": null,
+                        "new_rec_tags": [],
+                        "rank_score": 102669849,
+                        "like": 1,
+                        "upic": "http://i2.hdslb.com/bfs/face/7f19eede756f9717ce4828e00dd988af41a17ed0.jpg",
+                        "corner": "",
+                        "cover": "",
+                        "desc": "",
+                        "url": "",
+                        "rec_reason": ""
+                    }
+                ]
+            }
+        ]
+    }
+}
