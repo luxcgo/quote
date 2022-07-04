@@ -1,9 +1,45 @@
 package main
 
-import "net/url"
+import (
+	"errors"
+	"fmt"
+	"io"
+	"log"
+	"os"
+	"regexp"
+	"unicode/utf8"
+)
+
+func main1() {
+	f, _ := os.Open("a.html")
+	b, _ := io.ReadAll(f)
+	content := string(b)
+	log.Println(string(b))
+
+	title, _ := Match(`title="([^"]+)" target="_blank"`, content)
+	roomName, _ := Match(`title="([^"]+)" class="router-link-exact-active`, content)
+	url, _ := Match(`,"url":"([^"]+)"`, content)
+	println(title, roomName, url)
+}
+
+func Match(pattern, content string) (string, error) {
+	re, err := regexp.Compile(pattern)
+	if err != nil {
+		return "", err
+	}
+	submatch := re.FindAllStringSubmatch(content, -1)
+	res := make([]string, 0)
+	for _, v := range submatch {
+		res = append(res, string(v[1]))
+	}
+	if len(res) < 1 {
+		return "", errors.New("pattern not found")
+	}
+	return res[0], nil
+}
 
 func main() {
-	s := `%22%3A%22%2F235808786065%22%2C%22odin%22%3A%7B%22user_id%22%3A%222397364629551135%22%2C%22user_type%22%3A12%2C%22user_is_auth%22%3A0%2C%22user_is_login%22%3A0%2C%22user_unique_id%22%3A%227079432498174051880%22%7D%2C%22routeInitialProps%22%3A%7B%22status_code%22%3A%220%22%2C%22layoutData%22%3A%7B%22categoryTab%22%3A%7B%22categoryData%22%3A%5B%7B%22partition%22%3A%7B%22id_str%22%3A%22620%22%2C%22type%22%3A1%2C%22title%22%3A%22%E4%B8%BB%E6%9C%BA%E5%8D%95%E6%9C%BA%22%7D%2C%22sub_partition%22%3A%5B%7B%22partition%22%3A%7B%22id_str%22%3A%22628%22%2C%22type%22%3A1%2C%22title%22%3A%22%E6%8B%B3%E7%9A%87%E7%B3%BB%E5%88%97%22%7D%2C%22sub_partition%22%3A%5B%5D%7D%2C%7B%22partition%22%3A%7B%22id_str%22%3A%224434%22%2C%22type%22%3A1%2C%22title%22%3A%22Dread%20Hunger%22%7D%2C%22sub_partition%22%3A%5B%5D%7D%2C%7B%22partition%22%3A%7B%22id_str%22%3A%22725%22%2C%22type%22%3A1%2C%22title%22%3A%22%E5%85%B6%E4%BB%96%E4%B8%BB%E6%9C%BA%E6%B8%B8%E6%88%8F%22%7D%2C%22sub_partition%22%3A%5B%5D%7D%2C%7B%22partition%22%3A%7B%22id_str%22%3A%22623%22%2C%22type%22%3A1%2C%22title%22%3A%22%E6%88%91%E7%9A%84%E4%B8%96%E7%95%8C%22%7D%2C%22sub_partition%22%3A%5B%5D%7D%2C%7B%22partition%22%3A%7B%22id_str%22%3A%22692%22%2C%22type%22%3A1%2C%22title%22%3A%22%E9%80%83%E7%A6%BB%E5%A1%94%E7%A7%91%E5%A4%AB%22%7D%2C%22sub_partition%22%3A%5B%5D%7D%2C%7B%22partition%22%3A%7B%22id_str%22%3A%224500%22%2C%22type%22%3A1%2C%22title%22%3A%22%E8%89%BE%E5%B0%94%E7%99%BB%E6%B3%95%E7%8E%AF%22%7D%2C%22sub_partition%22%3A%5B%5D%7D%2C%7B%22partition%22%3A%7B%22id_str%22%3A%22705%22%2C%22type%22%3A1%2C%22title%22%3A%22%E4%BB%81%E7%8E%8B%22%7D%2C%22sub_partition%22%3A%5B%5D%7D%2C%7B%22partition%22%3A%7B%22id_str%22%3A%22644%22%2C%22type%22%3A1%2C%22title%22%3A%22%E8%8D%92%E9%87%8E%E5%A4%A7%E9%95%96%E5%AE%A22%22%7D%2C%22sub_partition%22%3A%5B%5D%7D%5D%7D%2C%7B%22partition%22%3A%7B%22id_str%22%3A%22591%22%2C%22type%22%3A1%2C%22title%22%3A%22%E6%A3%8B%E7%89%8C%E6%B8%B8%E6%88%8F%22%7D%2C%22sub_partition%22%3A%5B%7B%22partition%22%3A%7B%22id_str%22%3A%22592%22%2C%22type%22%3A1%2C%22title%22%3A%22%E6%96%97%E5%9C%B0%E4%B8%BB%22%7D%2C%22sub_partition%22%3A%5B%5D%7D%2C%7B%22partition%22%3A%7B%22id_str%22%3A%22624%22%2C%22type%22%3A1%2C%22title%22%3A%22%E9%BA%BB%E5%B0%86%22%7D%2C%22sub_partition%22%3A%5B%5D%7D%2C%7B%22partition%22%3A%7B%22id_str%22%3A%22595%22%2C%22type%22%3A1%2C%22title%22%3A%22%E8%B1"`
-	s = `https://github.com/SocialSisterYi/bilibili-API-collect/blob/master/live/info.md#%E8%8E%B7%E5%8F%96%E6%88%BF%E9%97%B4%E9%A1%B5%E5%88%9D%E5%A7%8B%E5%8C%96%E4%BF%A1%E6%81%AF`
-	println(url.QueryUnescape(s))
+	u := "https:\u002F\u002Fali.pull.yximgs.com\u002Fgifkwai\u002FU5dJ_fCSBWo_ma1500.flv?auth_key=1651768905-0-0-eaabea389577e748649f94be8be68654&tsc=cdn&fd=1&ss=s1"
+	utf8.DecodeRuneInString(src)
+	fmt.Print(u)
 }
