@@ -11,6 +11,7 @@ import (
 
 func main() {
 	println("hi")
+	println("squash")
 }
 
 var flagPath = flag.String("path", "test", "path to traverse and rename.")
