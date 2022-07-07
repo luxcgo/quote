@@ -2,6 +2,7 @@ package main
 
 import (
 	"flag"
+	"fmt"
 	"io/fs"
 	"log"
 	"os"
@@ -9,9 +10,19 @@ import (
 	"strings"
 )
 
+var AppVersion = "v0.1"
+
+func init() {
+	version := flag.Bool("v", false, "print olive version")
+	flag.Parse()
+	if *version {
+		fmt.Println(AppVersion)
+		os.Exit(0)
+	}
+}
+
 func main() {
-	println("hi")
-	println("squash")
+	fmt.Println("haha")
 }
 
 var flagPath = flag.String("path", "test", "path to traverse and rename.")
