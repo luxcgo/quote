@@ -10,7 +10,7 @@ import (
 	"strings"
 )
 
-var AppVersion = "v0.1"
+var AppVersion = "v0.3"
 var builtBy = "unknown"
 
 func init() {
