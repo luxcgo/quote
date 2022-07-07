@@ -12,7 +12,7 @@ builds:
       - CGO_ENABLED=0
 
     ldflags:
-      - -X main.AppVersion=`git tag --sort=-version:refname | head -n 1`
+      - -X main.AppVersion=`2.2.2`
 
     goos:
       - darwin
