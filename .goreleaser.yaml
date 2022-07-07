@@ -1,11 +1,9 @@
 project_name: quote
 
-env:
-    - AppVersion=`git tag --sort=-version:refname | head -n 1`"
-    
 before:
   hooks:
     - go mod tidy
+    - sh -c "export AppVersion=`git tag --sort=-version:refname | head -n 1`"
 
 builds:
   - binary: quote
