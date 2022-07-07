@@ -1,5 +1,8 @@
 project_name: quote
 
+env:
+  - AppVersion=`git tag --sort=-version:refname | head -n 1`
+
 before:
   hooks:
     - go mod tidy
@@ -10,7 +13,6 @@ builds:
     main: ./
     env:
       - CGO_ENABLED=0
-      - AppVersion=$(git tag --sort=-version:refname | head -n 1)
 
     ldflags:
       - -s -w -X main.AppVersion={{.Env.AppVersion}}
