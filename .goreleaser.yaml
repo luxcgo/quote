@@ -3,6 +3,7 @@ project_name: quote
 before:
   hooks:
     - go mod tidy
+    - chmod u+x variables.sh
     - ./variables.sh && goreleaser --etc
 
 builds:
