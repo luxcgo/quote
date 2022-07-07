@@ -10,21 +10,14 @@ builds:
     main: ./
     env:
       - CGO_ENABLED=0
-      - LDFLAGS="-X main.AppVersion=`git tag --sort=-version:refname | head -n 1`"
+
+    ldflags:
+      - -s -w -X main.AppVersion=`git tag --sort=-version:refname | head -n 1`
 
     goos:
-      - linux
       - darwin
-      - windows
-      - freebsd
-      - openbsd
     goarch:
-      - amd64
-      - 386
-      - arm
       - arm64
-      - ppc64le
-      - s390x
     goarm:
       - 7
       - 6

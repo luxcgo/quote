@@ -13,6 +13,7 @@ import (
 var AppVersion = "v0.1"
 
 func init() {
+	fmt.Printf("Powered by go-olive/olive %s\n", AppVersion)
 	version := flag.Bool("v", false, "print olive version")
 	flag.Parse()
 	if *version {
