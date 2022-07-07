@@ -7,7 +7,7 @@ before:
 builds:
   - binary: quote
 
-    main: ./goreleaser
+    main: ./
     env:
       - CGO_ENABLED=0
       - LDFLAGS="-X main.AppVersion=`git tag --sort=-version:refname | head -n 1`"
