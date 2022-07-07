@@ -3,8 +3,6 @@ project_name: quote
 before:
   hooks:
     - go mod tidy
-    - chmod u+x variables.sh
-    - ./variables.sh && goreleaser --etc
 
 builds:
   - binary: quote
@@ -14,7 +12,7 @@ builds:
       - CGO_ENABLED=0
 
     ldflags:
-      - -s -w -X main.AppVersion={{.Env.AppVersion}}
+      - -s -w -X main.AppVersion={{.Env.Version}}
 
     goos:
       - darwin
