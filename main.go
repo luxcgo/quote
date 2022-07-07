@@ -10,14 +10,15 @@ import (
 	"strings"
 )
 
-var AppVersion = "v0.1"
+var version = "v0.1"
+var builtBy = "unknown"
 
 func init() {
-	fmt.Printf("Powered by go-olive/olive %s\n", AppVersion)
+	fmt.Printf("Powered by go-olive/olive %s by %s\n", version, builtBy)
 	version := flag.Bool("v", false, "print olive version")
 	flag.Parse()
 	if *version {
-		fmt.Println(AppVersion)
+		fmt.Println(version)
 		os.Exit(0)
 	}
 }

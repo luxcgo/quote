@@ -11,9 +11,6 @@ builds:
     env:
       - CGO_ENABLED=0
 
-    ldflags:
-      - -X main.AppVersion=`2.2.2`
-
     goos:
       - darwin
     goarch:
