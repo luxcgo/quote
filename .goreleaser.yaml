@@ -3,6 +3,7 @@ project_name: quote
 before:
   hooks:
     - go mod tidy
+    - export AppVersion=`git tag --sort=-version:refname | head -n 1`
 
 builds:
   - binary: quote
@@ -10,6 +11,9 @@ builds:
     main: ./
     env:
       - CGO_ENABLED=0
+
+    ldflags:
+      - -s -w -X main.AppVersion={{.Env.AppVersion}}
 
     goos:
       - darwin
