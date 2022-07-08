@@ -11,6 +11,7 @@ import (
 )
 
 var AppVersion = "v0.3"
+var Pr = true
 var builtBy = "unknown"
 
 func init() {
