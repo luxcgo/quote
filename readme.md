@@ -1,4 +1,4 @@
-<img src="https://raw.githubusercontent.com/luxcgo/quote/main/a.png" alt="olive" style="zoom:50%;" />
+![olive](https://raw.githubusercontent.com/luxcgo/quote/main/a.png)
 
 [![GoDoc](https://img.shields.io/badge/GoDoc-Reference-blue?style=for-the-badge&logo=go)](https://pkg.go.dev/github.com/go-olive/olive?tab=doc)
 [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/go-olive/olive/goreleaser?style=for-the-badge)](https://github.com/go-olive/olive/actions/workflows/release.yml)
