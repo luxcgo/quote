@@ -72,7 +72,7 @@ StreamerName = "old-tomato"
 OutTmpl = "[{{ now | date \"2006-01-02 15-04-05\"}}][{{ .StreamerName }}][{{ .RoomName }}]"
 ```
 
-## Custom video save location
+### Custom video save location
 
 Add config `SaveDir`
 
