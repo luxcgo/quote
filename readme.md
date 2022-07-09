@@ -1,4 +1,4 @@
-![olive](https://raw.githubusercontent.com/go-olive/brand-kit/main/banner/banner-01.jpg)
+![olive](https://raw.githubusercontent.com/luxcgo/quote/2efcc579e99d0e0da63b8f41bdc96b566738f8e5/a.jpg)
 
 [![GoDoc](https://img.shields.io/badge/GoDoc-Reference-blue?style=for-the-badge&logo=go)](https://pkg.go.dev/github.com/go-olive/olive?tab=doc)
 [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/go-olive/olive/goreleaser?style=for-the-badge)](https://github.com/go-olive/olive/actions/workflows/release.yml)
