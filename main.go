@@ -10,7 +10,7 @@ import (
 	"strings"
 )
 
-var AppVersion = "v0.3"
+var AppVersion = "v0.4"
 
 //var Pr = true
 var builtBy = "unknown"
