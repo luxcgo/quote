@@ -13,7 +13,7 @@ import (
 var AppVersion = "v2.4"
 
 //var Pr = true
-var builtBy = "unknown"
+var builtBy = "unkown"
 
 func init() {
 	fmt.Printf("Powered by go-olive/olive %s by %s\n", AppVersion, builtBy)
