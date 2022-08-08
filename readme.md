@@ -1,6 +1,5 @@
-![olive](https://raw.githubusercontent.com/luxcgo/quote/main/a.png)
 <p align="center">
-  <img src="https://raw.githubusercontent.com/luxcgo/quote/main/a.png" />
+  <img src="https://raw.githubusercontent.com/luxcgo/quote/main/tparent.png" />
 </p>
 
 [![GoDoc](https://img.shields.io/badge/GoDoc-Reference-blue?style=for-the-badge&logo=go)](https://pkg.go.dev/github.com/go-olive/olive?tab=doc)
