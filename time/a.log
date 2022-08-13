@@ -1,0 +1,14 @@
+time="2022-07-24 23:15:04" level=info msg="Powered by go-olive/olive "
+time="2022-07-24 23:15:04" level=info msg="dispatch add monitor" id=1319379 pf=bilibili
+time="2022-07-24 23:15:04" level=info msg="dispatch remove recorder" id=1319379 pf=bilibili
+time="2022-07-24 23:15:04" level=info msg="monitor start" id=1319379 pf=bilibili
+time="2022-07-24 23:15:05" level=info msg="live status changed" id=1319379 new=true old=false pf=bilibili
+time="2022-07-24 23:15:05" level=info msg="dispatch add recorder" id=1319379 pf=bilibili
+time="2022-07-24 23:15:05" level=info msg="recorder start" id=1319379 pf=bilibili
+time="2022-07-24 23:15:05" level=info msg="dispatch remove monitor" id=1319379 pf=bilibili
+time="2022-07-24 23:15:05" level=info msg="monitor stop" id=1319379 pf=bilibili
+time="2022-07-24 23:15:05" level=info msg="record start" id=1319379 pf=bilibili rn="【竖屏全身】好长一条"
+time="2022-07-24 23:15:05" level=debug msg="flv working" out="/Users/lucas/github/quote/time/[哔哩哔哩][【竖屏全身】好长一条][2022-07-24 23-15-05].flv"
+time="2022-07-24 23:15:06" level=info msg="handle request" signal=interrupt
+time="2022-07-24 23:15:06" level=info msg="record stop: <nil>" id=1319379 pf=bilibili
+time="2022-07-24 23:15:06" level=info msg="recorder stop" id=1319379 pf=bilibili

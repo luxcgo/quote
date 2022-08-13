@@ -1,24 +1,43 @@
 package main
 
 import (
-	"fmt"
-	"io/ioutil"
-	"log"
-	"net/http"
+	"net"
+	"os"
 )
 
 func main() {
-	resp, err := http.Get("http://gaia.cs.umass.edu/wireshark-labs/INTRO-wireshark-file1.html")
+	strEcho := "*3\r\n$3\r\nSET\r\n$3\r\nkey\r\n$5\r\nvalue\r\n"
+
+	servAddr := "localhost:6379"
+	tcpAddr, err := net.ResolveTCPAddr("tcp", servAddr)
 	if err != nil {
-		log.Fatal(err)
+		println("ResolveTCPAddr failed:", err.Error())
+		os.Exit(1)
 	}
 
-	defer resp.Body.Close()
-
-	body, err := ioutil.ReadAll(resp.Body)
+	conn, err := net.DialTCP("tcp", nil, tcpAddr)
 	if err != nil {
-		log.Fatal(err)
+		println("Dial failed:", err.Error())
+		os.Exit(1)
 	}
 
-	fmt.Println(string(body))
+	_, err = conn.Write([]byte(strEcho))
+	if err != nil {
+		println("Write to server failed:", err.Error())
+		os.Exit(1)
+	}
+
+	println("write to server = ", strEcho)
+
+	reply := make([]byte, 1024)
+
+	_, err = conn.Read(reply)
+	if err != nil {
+		println("Write to server failed:", err.Error())
+		os.Exit(1)
+	}
+
+	println("reply from server=", string(reply))
+
+	conn.Close()
 }

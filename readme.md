@@ -6,25 +6,26 @@
 [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/go-olive/olive/goreleaser?style=for-the-badge)](https://github.com/go-olive/olive/actions/workflows/release.yml)
 [![Sourcegraph](https://img.shields.io/badge/view%20on-Sourcegraph-brightgreen.svg?style=for-the-badge&logo=sourcegraph)](https://sourcegraph.com/github.com/go-olive/olive)
 [![Github All Releases](https://img.shields.io/github/downloads/go-olive/olive/total.svg?style=for-the-badge)](https://github.com/go-olive/olive/releases)
+![qqgroup](https://img.shields.io/:QQ群-735124170-yellow.svg?style=for-the-badge)
 
 Olive is a powerful engine which monitors streamers status and automatically records when they're online. Helps you catch every live stream.
 
 ## Feature
 
-* Small
-* Easy-to-use
-* Efficient
-* Extensible
-* Customizable
-* Cross-platform
+- Small
+- Easy-to-use
+- Efficient
+- Extensible
+- Customizable
+- Cross-platform
 
 ## Installation
 
-* build from source
+- build from source
 
-    `go install github.com/go-olive/olive/src/cmd/olive@latest`
+  `go install github.com/go-olive/olive/src/cmd/olive@latest`
 
-* download from [**releases**](https://github.com/go-olive/olive/releases)
+- download from [**releases**](https://github.com/go-olive/olive/releases)
 
 ## Quickstart
 
@@ -60,11 +61,11 @@ StreamerName = "old-tomato"
 
 Add config `OutTmpl`
 
-* Date: `{{ now | date \"2006-01-02 15-04-05\"}}`
+- Date: `{{ now | date \"2006-01-02 15-04-05\"}}`
 
-* Streame Name: `{{ .StreamerName }}`
+- Streame Name: `{{ .StreamerName }}`
 
-* Stream Title: `{{ .RoomName }}`
+- Stream Title: `{{ .RoomName }}`
 
 ```toml
 [[Shows]]
@@ -121,12 +122,12 @@ The commands will be executed automatically when the live ends , and if any comm
 
 **olive** provides several out-of-box commands that have been implemented internally. (set config `Path` under `[[Shows.PostCmds]]`)
 
-* `olivearchive`: Move the file to the archive folder under the current directory.
-* `olivetrash`: Delete the file (unrecoverable).
-* `olivebiliup`: If `UploadConfig` is configured, it will automatically upload to `bilibili` according to the configuration, if the upload fails it will execute `olivearchive`.
-    * this requires to install [biliup-rs](https://github.com/ForgQi/biliup-rs) locally, and set `ExecPath` as the excutable filepath.
-* `oliveshell`: split normal shell commands as an array of strings, and put them in config `Args` .
-    * embed video file path as env variable. Can be used by `$FILE_PATH`
+- `olivearchive`: Move the file to the archive folder under the current directory.
+- `olivetrash`: Delete the file (unrecoverable).
+- `olivebiliup`: If `UploadConfig` is configured, it will automatically upload to `bilibili` according to the configuration, if the upload fails it will execute `olivearchive`.
+  - this requires to install [biliup-rs](https://github.com/ForgQi/biliup-rs) locally, and set `ExecPath` as the excutable filepath.
+- `oliveshell`: split normal shell commands as an array of strings, and put them in config `Args` .
+  - embed video file path as env variable. Can be used by `$FILE_PATH`
 
 Config example:
 
@@ -161,10 +162,10 @@ Simulation:
 
 When any of the following condition is met, **olive** will start a new file.
 
-* maximum video duration: `Duration`
-    * A duration string is a possibly signed sequence of decimal numbers, each with optional fraction and a unit suffix, such as "300ms", "-1.5h" or "2h45m".
-    * Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h".
-* maximum video filesize (byte): `Filesize`
+- maximum video duration: `Duration`
+  - A duration string is a possibly signed sequence of decimal numbers, each with optional fraction and a unit suffix, such as "300ms", "-1.5h" or "2h45m".
+  - Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h".
+- maximum video filesize (byte): `Filesize`
 
 ```toml
 [[Shows]]
@@ -194,7 +195,6 @@ Args = ["/bin/sh", "-c", "echo $FILE_PATH"]
 | youtube  |
 
 **olive** relies on **[olivetv](https://github.com/go-olive/tv)** to support above sites. If yours is not on the list above, welcome to submit an issue or a pr at **[olivetv](https://github.com/go-olive/tv)**.
-
 
 ## Config.toml
 
@@ -243,12 +243,11 @@ Path = "olivetrash"
 
 ## RoadMap
 
-* Add docker image
-* Add mock test
-* Add web ui
-* Add prometheus and grafana
+- Add docker image
+- Add mock test
+- Add web ui
+- Add prometheus and grafana
 
 ## License
 
 This project is under the MIT License. See the [LICENSE](https://github.com/go-olive/olive/blob/main/LICENSE) file for the full license text.
-
