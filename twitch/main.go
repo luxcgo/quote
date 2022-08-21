@@ -30,13 +30,13 @@ func main() {
 	GenTsUrls()
 }
 func GenTsUrls() {
-	m3u8Url := "https://d3vd9lfkzbru3h.cloudfront.net/6b3f453eec2bbed8e568_domado0129_39489780903_1657886765/chunked/index-dvr.m3u8"
+	m3u8Url := "https://d3vd9lfkzbru3h.cloudfront.net/1db00f19b6cd59789b62_domado0129_39484368311_1657713709/chunked/index-dvr.m3u8"
 	m3u8Host := getHost(m3u8Url, hostType)
-	m3u8Body, _ := os.ReadFile("a.m3u8")
+	m3u8Body, _ := os.ReadFile("b.m3u8")
 	ts_list := getTsList(m3u8Host, string(m3u8Body))
 	fmt.Println("待下载 ts 文件数量:", len(ts_list))
 
-	f, err := os.Create("a.txt")
+	f, err := os.Create("b.txt")
 	if err != nil {
 		log.Fatal(err)
 	}
