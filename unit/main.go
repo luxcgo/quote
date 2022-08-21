@@ -41,7 +41,6 @@ func main() {
 		panic(fmt.Sprintf("failed to render filename, err: %v", err))
 	}
 	println(buf.String())
-	buf.
 }
 
 type Info struct {

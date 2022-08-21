@@ -7,7 +7,6 @@ import (
 	"log"
 	"os"
 	"regexp"
-	"unicode/utf8"
 )
 
 func main1() {
@@ -40,6 +39,5 @@ func Match(pattern, content string) (string, error) {
 
 func main() {
 	u := "https:\u002F\u002Fali.pull.yximgs.com\u002Fgifkwai\u002FU5dJ_fCSBWo_ma1500.flv?auth_key=1651768905-0-0-eaabea389577e748649f94be8be68654&tsc=cdn&fd=1&ss=s1"
-	utf8.DecodeRuneInString(src)
 	fmt.Print(u)
 }

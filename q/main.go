@@ -1,11 +1,14 @@
 package main
 
-import "log"
+import (
+	"fmt"
+	"path/filepath"
+)
 
 func main() {
-	topoOrder := make([]int, 5)
-	change(&topoOrder)
-	log.Println(topoOrder)
+	// filepathStr := "/Users/lucas/github/quote/q"
+	matches, err := filepath.Glob("[0-9]*.ts")
+	fmt.Println(matches, err)
 }
 
 func change(s *[]int) {
