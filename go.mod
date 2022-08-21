@@ -11,6 +11,7 @@ require (
 	github.com/go-rod/rod v0.106.4
 	github.com/gogf/gf v1.16.8
 	github.com/json-iterator/go v1.1.12
+	github.com/levigross/grequests v0.0.0-20190908174114-253788527a1a
 	github.com/luxcgo/lifesaver v0.1.1
 	github.com/sirupsen/logrus v1.8.1
 	golang.org/x/net v0.0.0-20220425223048-2871e0cb64e4
@@ -32,6 +33,7 @@ require (
 	github.com/gobwas/pool v0.2.1 // indirect
 	github.com/gobwas/ws v1.1.0 // indirect
 	github.com/gomodule/redigo v1.8.5 // indirect
+	github.com/google/go-querystring v1.0.0 // indirect
 	github.com/google/uuid v1.3.0 // indirect
 	github.com/gorilla/websocket v1.4.2 // indirect
 	github.com/grokify/html-strip-tags-go v0.0.1 // indirect

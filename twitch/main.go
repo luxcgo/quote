@@ -1,69 +1,102 @@
 package main
 
 import (
-	"io/ioutil"
+	"fmt"
 	"log"
-	"net/http"
-	"strconv"
+	"net/url"
+	"os"
+	"path/filepath"
 	"strings"
 	"time"
+
+	"github.com/levigross/grequests"
 )
 
-func main1() {
-	url := "https://www.twitch.tv/videos/156447"
-	for i := 5000; i < 7000; i++ {
-		log.Println(i)
-		newUrl := url + strconv.Itoa(i)
-		content, _ := GetURLContent(newUrl)
-		content = strings.ToLower(content)
-		if strings.Contains(content, "domado0129") {
-			log.Println(newUrl)
-			break
-		}
-		time.Sleep(time.Millisecond)
+var (
+	hostType = "apiv1"
+	ro       = &grequests.RequestOptions{
+		UserAgent:      "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36",
+		RequestTimeout: 10 * time.Second,
+		Headers: map[string]string{
+			"Connection":      "keep-alive",
+			"Accept":          "*/*",
+			"Accept-Encoding": "*",
+			"Accept-Language": "zh-CN,zh;q=0.9, en;q=0.8, de;q=0.7, *;q=0.5",
+		},
 	}
-
-	// content, _ := GetURLContent("https://www.twitch.tv/videos/1566372736")
-
-	// log.Println(content)
-}
+)
 
 func main() {
-	url := "https://www.twitch.tv/videos/156637273"
-	for i := 0; i < 7000; i++ {
-		log.Println(i)
-		newUrl := url + strconv.Itoa(i)
-		content, _ := GetURLContent(newUrl)
-		content = strings.ToLower(content)
-		if strings.Contains(content, "domado0129") {
-			log.Println(newUrl)
-			break
-		}
-		time.Sleep(time.Millisecond)
+	GenTsUrls()
+}
+func GenTsUrls() {
+	m3u8Url := "https://d3vd9lfkzbru3h.cloudfront.net/6b3f453eec2bbed8e568_domado0129_39489780903_1657886765/chunked/index-dvr.m3u8"
+	m3u8Host := getHost(m3u8Url, hostType)
+	m3u8Body, _ := os.ReadFile("a.m3u8")
+	ts_list := getTsList(m3u8Host, string(m3u8Body))
+	fmt.Println("待下载 ts 文件数量:", len(ts_list))
+
+	f, err := os.Create("a.txt")
+	if err != nil {
+		log.Fatal(err)
 	}
-
-	// content, _ := GetURLContent("https://www.twitch.tv/videos/1566372736")
-
-	// log.Println(content)
+	defer f.Close()
+	for _, v := range ts_list {
+		s := fmt.Sprintf("%s\n", v.Url)
+		if strings.Contains(s, "unmuted") {
+			continue
+		}
+		f.WriteString(s)
+	}
+	return
 }
 
-func GetURLContent(url string) (string, error) {
-	webUserAgent := "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36"
-	req, err := http.NewRequest("GET", url, nil)
+func getHost(Url, ht string) (host string) {
+	u, err := url.Parse(Url)
 	if err != nil {
-		return "", err
+		log.Fatal(err)
 	}
-	req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
-	req.Header.Set("User-Agent", webUserAgent)
-	resp, err := http.DefaultClient.Do(req)
+	switch ht {
+	case "apiv1":
+		host = u.Scheme + "://" + u.Host + filepath.Dir(u.EscapedPath())
+	case "apiv2":
+		host = u.Scheme + "://" + u.Host
+	}
+	return
+}
+
+func getM3u8Body(Url string) string {
+	r, err := grequests.Get(Url, ro)
 	if err != nil {
-		return "", err
+		log.Fatal(err)
 	}
-	defer resp.Body.Close()
-	respBody, err := ioutil.ReadAll(resp.Body)
-	if err != nil {
-		return "", err
+	return r.String()
+}
+
+func getTsList(host, body string) (tsList []TsInfo) {
+	lines := strings.Split(body, "\n")
+	index := 0
+	var ts TsInfo
+	for _, line := range lines {
+		if !strings.HasPrefix(line, "#") && line != "" {
+			//有可能出现的二级嵌套格式的m3u8,请自行转换！
+			index++
+			if strings.HasPrefix(line, "http") {
+				ts = TsInfo{
+					Url: line,
+				}
+				tsList = append(tsList, ts)
+			} else {
+				ts = TsInfo{
+					Url: fmt.Sprintf("%s/%s", host, line),
+				}
+				tsList = append(tsList, ts)
+			}
+		}
 	}
-	content := string(respBody)
-	return content, nil
+	return
+}
+
+type TsInfo struct {
+	Url string
 }
