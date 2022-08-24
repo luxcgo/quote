@@ -46,4 +46,5 @@ func main() {
 
 	log.Println(t1.Name)
 	log.Println(t2.Name)
+
 }

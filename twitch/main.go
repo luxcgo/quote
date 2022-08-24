@@ -30,7 +30,7 @@ func main() {
 	GenTsUrls()
 }
 func GenTsUrls() {
-	m3u8Url := "https://d3vd9lfkzbru3h.cloudfront.net/1db00f19b6cd59789b62_domado0129_39484368311_1657713709/chunked/index-dvr.m3u8"
+	m3u8Url := "https://d3vd9lfkzbru3h.cloudfront.net/b895f864fec797f9a481_domado0129_39585681303_1660997202/chunked/index-dvr.m3u8"
 	m3u8Host := getHost(m3u8Url, hostType)
 	m3u8Body, _ := os.ReadFile("b.m3u8")
 	ts_list := getTsList(m3u8Host, string(m3u8Body))
