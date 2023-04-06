@@ -13,7 +13,7 @@
 ## Sponsor
 
 <a href="https://olived.app" target="_blank">
-  <img src="https://raw.githubusercontent.com/go-olive/brand-kit/main/icon/appicon.png" width=50 height=50 />
+  <img src="https://raw.githubusercontent.com/go-olive/brand-kit/main/icon/appicon.png" width=142 height=142 />
 </a>
 
 [Olived | 录播从未如此简单](https://olived.app)
