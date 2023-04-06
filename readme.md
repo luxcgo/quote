@@ -13,15 +13,15 @@
 ## Sponsor
 
 <a href="https://olived.app" target="_blank">
-  <img src="https://raw.githubusercontent.com/go-olive/brand-kit/main/icon/appicon.png" width=42 height=42 />
+  <img src="https://raw.githubusercontent.com/go-olive/brand-kit/main/icon/appicon.png" width=50 height=50 />
 </a>
 
-[**Olived | 录播从未如此简单**](https://olived.app)
+[Olived | 录播从未如此简单](https://olived.app)
 
 ## Installation
 
 - build from source
-  
+
   `go install github.com/go-olive/olive@latest`
 
 - download from [**releases**](https://github.com/go-olive/olive/releases)
