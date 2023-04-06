@@ -1,0 +1,83 @@
+<script setup lang="ts">
+import { Descriptions } from '@/components/Descriptions'
+import { useI18n } from '@/hooks/web/useI18n'
+import { reactive } from 'vue'
+import { Form } from '@/components/Form'
+import { ElFormItem, ElInput, ElButton } from 'element-plus'
+import { useForm } from '@/hooks/web/useForm'
+import { getCoreConfigApi } from '@/api/table'
+import { ConfigData } from '@/api/table/types'
+
+const { t } = useI18n()
+
+const schema = reactive<DescriptionsSchema[]>([
+  {
+    field: 'PortalUsername',
+    label: t('configsDemo.portalUsername')
+  },
+  {
+    field: 'PortalPassword',
+    label: t('configsDemo.portalPassword')
+  }
+])
+
+let form: ConfigData = getCoreConfig()
+
+function getCoreConfig(): ConfigData {
+  let val: ConfigData = {
+    PortalPassword: 'aa',
+    PortalUsername: 'bb'
+  }
+  getCoreConfigApi()
+    .then((value) => {
+      console.log(value) // 👉️ "hello"
+      console.log(value.data) // 👉️ "hello"
+      console.log(value.data.Value)
+      val = JSON.parse(value.data.Value)
+      console.log(val.PortalPassword)
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+  console.log(val.PortalPassword)
+  return val
+}
+
+const { register } = useForm()
+
+const formValidation = () => {
+  console.log(form.PortalPassword)
+}
+</script>
+
+<template>
+  <Form is-custom :model="form" @register="register">
+    <Descriptions :title="t('configsDemo.form')" :schema="schema" class="mt-20px">
+      <template #PortalUsername>
+        <ElFormItem prop="PortalUsername">
+          <ElInput v-model="form.PortalUsername" />
+        </ElFormItem>
+      </template>
+      <template #PortalPassword>
+        <ElFormItem prop="PortalPassword">
+          <ElInput v-model="form.PortalPassword" />
+        </ElFormItem>
+      </template>
+    </Descriptions>
+    <div class="text-center mt-10px">
+      <ElButton @click="formValidation"> {{ t('formDemo.formValidation') }} </ElButton>
+    </div>
+  </Form>
+</template>
+
+<style lang="less" scoped>
+.is-required--item {
+  position: relative;
+
+  &::before {
+    margin-right: 4px;
+    color: var(--el-color-danger);
+    content: '*';
+  }
+}
+</style>

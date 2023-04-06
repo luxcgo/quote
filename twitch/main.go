@@ -26,11 +26,11 @@ var (
 	}
 )
 
-func main() {
+func main2() {
 	GenTsUrls()
 }
 func GenTsUrls() {
-	m3u8Url := "https://d3vd9lfkzbru3h.cloudfront.net/b895f864fec797f9a481_domado0129_39585681303_1660997202/chunked/index-dvr.m3u8"
+	m3u8Url := "https://d3vd9lfkzbru3h.cloudfront.net/d4dff3d0c71d98f7c766_domado0129_39669054375_1663070749/chunked/index-dvr.m3u8"
 	m3u8Host := getHost(m3u8Url, hostType)
 	m3u8Body, _ := os.ReadFile("b.m3u8")
 	ts_list := getTsList(m3u8Host, string(m3u8Body))
@@ -99,4 +99,16 @@ func getTsList(host, body string) (tsList []TsInfo) {
 
 type TsInfo struct {
 	Url string
+}
+
+func main() {
+	link := `https://d3vd9lfkzbru3h.cloudfront.net/208cf42b36d5e249969a_domado0129_39728317847_1664626123/chunked/%d.ts`
+	f, _ := os.Create("tmp.txt")
+	defer f.Close()
+	sb := &strings.Builder{}
+	for i := 0; i <= 790; i++ {
+		sb.WriteString(fmt.Sprintf(link, i))
+		sb.WriteString("\n")
+	}
+	f.WriteString(sb.String())
 }

@@ -1,0 +1,12 @@
+[
+  {
+    "Path": "oliveshell",
+    "Args": ["/bin/zsh", "-c", "echo $FILE_PATH"]
+  },
+  {
+    "Path": "olivebiliup"
+  },
+  {
+    "Path": "olivetrash"
+  }
+]
